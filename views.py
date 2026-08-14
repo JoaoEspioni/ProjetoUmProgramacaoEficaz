@@ -1,4 +1,4 @@
-from utils import load_data, load_template
+from utils import load_data, load_template, save_data
 from flask import render_template_string
 
 def index():
@@ -10,3 +10,9 @@ def index():
     notes = '\n'.join(notes_li)
 
     return render_template_string(load_template('index.html'), notes=notes)
+
+def submit(titulo,detalhes):
+    data = { "titulo": titulo,
+        "detalhes": detalhes,
+    }
+    save_data(data)

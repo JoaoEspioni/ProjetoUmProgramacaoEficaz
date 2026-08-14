@@ -16,3 +16,11 @@ def load_template(nome_template):
     with open(caminho_template, 'r', encoding='utf-8') as file:
         template = file.read()
     return template
+
+def save_data(data):
+    with open("static/data/notes.json","r+", encoding='utf-8') as file:
+        carregarjson = json.load(file)
+        carregarjson.append(data)
+        file.seek(0)
+        json.dump(carregarjson,file,indent=4)
+        
