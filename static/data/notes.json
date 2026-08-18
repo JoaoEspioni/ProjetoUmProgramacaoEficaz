@@ -30,5 +30,17 @@
     {
         "titulo": "jSON PONTO LOAD",
         "detalhes": "CARREGA UM JSON"
+    },
+    {
+        "titulo": "Turbo - W",
+        "detalhes": "Blitzcrank sobrecarrega-se para aumentar drasticamente suas Velocidades de Ataque e de Movimento. Ap\u00f3s o fim do efeito, sofre Lentid\u00e3o temporariamente."
+    },
+    {
+        "titulo": "Bernardo",
+        "detalhes": "do Siar\u00e1"
+    },
+    {
+        "titulo": "\"Eu j\u00e1 joguei todos esses jogos\"",
+        "detalhes": "Jogos da Lula"
     }
 ]

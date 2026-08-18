@@ -1,0 +1,180 @@
+/* ----- Reset e Configurações Básicas ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #f6f6f6;
+  --bg-secondary: #ffffff;
+  --bg-header: #fec107;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --note-yellow: #fffacd;
+  --note-pink: #ffb6c1;
+  --note-blue: #add8e6;
+  --note-green: #90ee90;
+  --note-purple: #dda0dd;
+  --input-bg: #ffffff;
+  --button-bg: #fec107;
+  --button-hover: #fdb001;
+}
+
+body {
+  font-family: Arial;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* ----- Header ----- */
+.header {
+  text-align: center;
+  background-color: var(--bg-header);
+  padding: 30px 20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.header img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* ----- Formulário ----- */
+form {
+  background-color: var(--bg-secondary);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  box-shadow: 0 6px 12px var(--shadow);
+}
+
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+form input[type="text"],
+form input[name="detalhes"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[name="detalhes"]:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 3px rgba(254, 193, 7, 0.2);
+}
+
+form input[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--button-bg);
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px var(--shadow);
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px var(--shadow);
+}
+
+form input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* ----- Lista de Notas ----- */
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ---- Estilo das Notas ---- */
+li {
+  background-color: var(--note-yellow);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px var(--shadow);
+  min-height: 200px;
+  transition: all 0.3s ease;
+  position: relative;
+  transform: rotate(-1deg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+li:nth-child(even) {
+  transform: rotate(1deg);
+  background-color: var(--note-pink);
+}
+
+li:nth-child(3n) {
+  background-color: var(--note-blue);
+}
+
+li:nth-child(4n) {
+  background-color: var(--note-green);
+}
+
+li:nth-child(5n) {
+  background-color: var(--note-purple);
+}
+
+li:hover {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 6px 6px 15px var(--shadow);
+  z-index: 10;
+}
+
+li h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #2c3e50;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 8px;
+}
+
+li p {
+  font-size: 1rem;
+  color: #34495e;
+  line-height: 1.5;
+  word-wrap: break-word;
+}

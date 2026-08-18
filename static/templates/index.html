@@ -2,21 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Get-it</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='getit.css') }}">
 </head>
 <body>
 
-<img src="{{ url_for('static', filename='img/logo-getit.png') }}">
-<p>Como o Post-it, mas com outro verbo</p>
+<div class="header">
+  <img src="{{ url_for('static', filename='img/logo-getit.png') }}" alt="Logo Get-it">
+  <p>Como o Post-it, mas com outro verbo</p>
+</div>
 
 
-  <form action="/submit" method="POST">
-    <label for="titulo">Título</label>
-    <input id="titulo" type="text" name="titulo" />
-    <label for="detalhes">Detalhes</label>
-    <input id="detalhes" name="detalhes" />
-    <input type="submit" />
-  </form>
+<form action="/submit" method="POST">
+  <label for="titulo">Título</label>
+  <input id="titulo" type="text" name="titulo" required placeholder="Digite o título da nota..." />
+  <label for="detalhes">Detalhes</label>
+  <input id="detalhes" name="detalhes" required placeholder="Digite os detalhes da nota..." />
+  <input type="submit" value="Adicionar Nota 📝" />
+</form>
   
 <ul>
 {{ notes|safe }}
