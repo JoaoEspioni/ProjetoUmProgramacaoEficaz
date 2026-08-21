@@ -1,18 +1,12 @@
-from utils import load_data, load_template, save_data
-from flask import render_template_string
+from utils import load_data, load_template, add_note
 
-def index():
+def get_notes():
     note_template = load_template('components/note.html')
     notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
-        for dados in load_data('notes.json')
+        note_template.format(id=dados['id'], title=dados['titulo'], details=dados['detalhes'])
+        for dados in load_data()
     ]
-    notes = '\n'.join(notes_li)
+    return '\n'.join(notes_li)
 
-    return render_template_string(load_template('index.html'), notes=notes)
-
-def submit(titulo,detalhes):
-    data = { "titulo": titulo,
-        "detalhes": detalhes,
-    }
-    save_data(data)
+def submit(titulo, detalhes):
+    add_note(titulo, detalhes)

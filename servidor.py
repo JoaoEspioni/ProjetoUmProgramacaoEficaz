@@ -1,16 +1,12 @@
-from flask import Flask, render_template_string, request, redirect
+from flask import Flask, render_template, request, redirect
 import views
 
-app = Flask(__name__)
-
-
-# Configurando a pasta de arquivos estáticos
+app = Flask(__name__, template_folder='static/templates')
 app.static_folder = 'static'
 
 @app.route('/')
 def index():
-
-    return render_template_string(views.index())
+    return render_template("index.html", notes=views.get_notes())
 
 @app.route('/submit', methods=['POST'])
 def submit_form():
