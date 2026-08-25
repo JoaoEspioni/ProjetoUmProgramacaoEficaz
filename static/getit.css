@@ -21,6 +21,13 @@
   --input-bg: #ffffff;
   --button-bg: #fec107;
   --button-hover: #fdb001;
+  --action-surface: rgba(255, 255, 255, 0.72);
+  --action-delete-border: #d7a5a5;
+  --action-delete-text: #805353;
+  --action-delete-hover: #f3d4d4;
+  --action-edit-border: #9dc4d8;
+  --action-edit-text: #3e6376;
+  --action-edit-hover: #d4e9f3;
 }
 
 body {
@@ -181,25 +188,36 @@ li p {
   word-wrap: break-word;
 }
 
-li a[name="delete_button"] {
+.note-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding-top: 10px;
+}
+
+li a[name="delete_button"],
+li a[name="edit_button"] {
   display: inline-flex;
   align-items: center;
-  align-self: flex-end;
-  margin-top: auto;
   padding: 6px 10px;
-  border: 1px solid #b42318;
   border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.65);
-  color: #8f1d14;
+  background-color: var(--action-surface);
   font-size: 0.82rem;
   font-weight: 700;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
+li a[name="delete_button"] {
+  border: 1px solid var(--action-delete-border);
+  color: var(--action-delete-text);
+}
+
 li a[name="delete_button"]:hover {
-  background-color: #b42318;
-  color: #ffffff;
+  background-color: var(--action-delete-hover);
+  color: #6f4444;
   transform: translateY(-1px);
 }
 
@@ -208,6 +226,26 @@ li a[name="delete_button"]:active {
 }
 
 li a[name="delete_button"]:focus-visible {
-  outline: 3px solid rgba(180, 35, 24, 0.35);
+  outline: 3px solid rgba(215, 165, 165, 0.55);
+  outline-offset: 2px;
+}
+
+li a[name="edit_button"] {
+  border: 1px solid var(--action-edit-border);
+  color: var(--action-edit-text);
+}
+
+li a[name="edit_button"]:hover {
+  background-color: var(--action-edit-hover);
+  color: #2f5365;
+  transform: translateY(-1px);
+}
+
+li a[name="edit_button"]:active {
+  transform: translateY(0);
+}
+
+li a[name="edit_button"]:focus-visible {
+  outline: 3px solid rgba(157, 196, 216, 0.55);
   outline-offset: 2px;
 }

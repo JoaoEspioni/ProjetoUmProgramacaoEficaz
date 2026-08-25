@@ -77,3 +77,27 @@ def delete_note(note_id):
             "DELETE FROM note WHERE id = ?",
             (note_id,),
         )
+
+def edit_note(note_id, titulo, detalhes):
+    _initialize_database()
+
+    with _get_connection() as conn:
+        conn.execute(
+            "UPDATE note SET title = ?, content = ? WHERE id = ?",
+            (titulo, detalhes, note_id),
+        )
+
+def get_note(note_id):
+    _initialize_database()
+
+    with _get_connection() as conn:
+        linha = conn.execute(
+            "SELECT id, title, content FROM note WHERE id = ?",
+            (note_id,),
+        ).fetchone()
+
+    if linha:
+        nota_id, titulo, detalhes = linha
+        return {"id": nota_id, "titulo": titulo, "detalhes": detalhes}
+    else:
+        return None

@@ -1,4 +1,4 @@
-from utils import load_data, load_template, add_note, delete_note as remove_note
+from utils import load_data, load_template, add_note, delete_note as remove_note, edit_note as update_note
 
 def get_notes():
     note_template = load_template('components/note.html')
@@ -13,3 +13,6 @@ def submit(titulo, detalhes):
 
 def delete_note(note_id):
     remove_note(note_id)
+
+def edit_note(note_id, titulo, detalhes):
+    update_note(note_id, titulo, detalhes)

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from utils import get_note
 import views
 
 app = Flask(__name__, template_folder='static/templates')
@@ -20,6 +21,16 @@ def submit_form():
 def delete(note_id):
     views.delete_note(note_id)
     return redirect('/')
+
+@app.route('/edit/<int:note_id>', methods=['GET', 'POST'])
+def edit(note_id):
+    if request.method == 'POST':
+        titulo = request.form.get('titulo')
+        detalhes = request.form.get('detalhes')
+        views.edit_note(note_id, titulo, detalhes)
+        return redirect('/')
+    else:
+        return render_template("edit.html", note=get_note(note_id))
 
 if __name__ == '__main__':
     app.run(debug=True)
