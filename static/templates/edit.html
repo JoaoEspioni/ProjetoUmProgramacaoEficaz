@@ -17,11 +17,11 @@
 
 <form action="/edit/{{ note.id }}" method="POST">
   <label for="titulo">Título</label>
-  <input id="note_id" type="text" name="titulo" value="{{ note.titulo }}" />
+  <input id="titulo" type="text" name="titulo" value="{{ note.titulo }}" />
   <label for="detalhes">Detalhes</label>
   <input id="detalhes" name="detalhes" value="{{ note.detalhes }}" />
   <input type="submit" value="Editar Nota 📝" />
-  <a href="/" name="cancelar_button">Cancelar</a>
+  <button type="button" name="edit_cancel" onclick="window.location.href='/'">Cancelar</button>
 </form>
   
 
