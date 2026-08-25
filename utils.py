@@ -68,3 +68,12 @@ def add_note(titulo, detalhes):
             "INSERT INTO note (title, content) VALUES (?, ?)",
             (titulo, detalhes),
         )
+
+def delete_note(note_id):
+    _initialize_database()
+
+    with _get_connection() as conn:
+        conn.execute(
+            "DELETE FROM note WHERE id = ?",
+            (note_id,),
+        )
