@@ -32,5 +32,12 @@ def edit(note_id):
     else:
         return render_template("edit.html", note=get_note(note_id))
 
+
+@app.route('/favorite/<int:note_id>', methods=['GET'])
+def favoritar(note_id):
+    
+    views.favorite_note(note_id)
+    return redirect('/')
+
 if __name__ == '__main__':
     app.run(debug=True)

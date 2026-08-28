@@ -198,7 +198,8 @@ li p {
 }
 
 li a[name="delete_button"],
-li a[name="edit_button"] {
+li a[name="edit_button"],
+li a[name="favorite_button"] {
   display: inline-flex;
   align-items: center;
   padding: 6px 10px;
@@ -247,5 +248,22 @@ li a[name="edit_button"]:active {
 
 li a[name="edit_button"]:focus-visible {
   outline: 3px solid rgba(157, 196, 216, 0.55);
+  outline-offset: 2px;
+}
+
+li a[name="favorite_button"] {
+  border: 1px solid #d8b84c;
+  color: #8a6a00;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+li a[name="favorite_button"]:hover {
+  background-color: #fff1ad;
+  transform: translateY(-1px);
+}
+
+li a[name="favorite_button"]:focus-visible {
+  outline: 3px solid rgba(216, 184, 76, 0.55);
   outline-offset: 2px;
 }

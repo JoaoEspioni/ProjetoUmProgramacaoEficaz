@@ -1,8 +1,10 @@
-<li>
+<li class="card">
   <h3>{title}</h3>
   <p>{details}</p>
+
   <div class="note-actions">
     <a href="/delete/{id}" name="delete_button">Excluir</a>
     <a href="/edit/{id}" name="edit_button">Editar</a>
+    <a href="/favorite/{id}" name="favorite_button" aria-label="{favorite_label}">{favorite_icon}</a>
   </div>
 </li>

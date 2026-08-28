@@ -20,10 +20,19 @@ def _initialize_database():
             CREATE TABLE IF NOT EXISTS note (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
-                content TEXT NOT NULL
+                content TEXT NOT NULL,
+                favorite INTEGER NOT NULL DEFAULT 0
             )
             """
         )
+
+        colunas = {
+            coluna[1] for coluna in conn.execute("PRAGMA table_info(note)")
+        }
+        if "favorite" not in colunas:
+            conn.execute(
+                "ALTER TABLE note ADD COLUMN favorite INTEGER NOT NULL DEFAULT 0"
+            )
 
         tabela_nota_existe = conn.execute(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='nota'"
@@ -40,12 +49,17 @@ def load_data():
 
     with _get_connection() as conn:
         linhas = conn.execute(
-            "SELECT id, title, content FROM note ORDER BY id"
+            "SELECT id, title, content, favorite FROM note ORDER BY favorite DESC, id"
         ).fetchall()
 
     return [
-        {"id": nota_id, "titulo": titulo, "detalhes": detalhes}
-        for nota_id, titulo, detalhes in linhas
+        {
+            "id": nota_id,
+            "titulo": titulo,
+            "detalhes": detalhes,
+            "favorito": bool(favorite),
+        }
+        for nota_id, titulo, detalhes, favorite in linhas
     ]
 
 def load_template(nome_arquivo):
@@ -101,3 +115,18 @@ def get_note(note_id):
         return {"id": nota_id, "titulo": titulo, "detalhes": detalhes}
     else:
         return None
+
+def favorite_note(note_id):
+    _initialize_database()
+
+    with _get_connection() as conn:
+        linha = conn.execute(
+            "SELECT favorite FROM note WHERE id = ?",
+            (note_id,),
+        ).fetchone()
+
+        if linha:
+            conn.execute(
+                "UPDATE note SET favorite = ? WHERE id = ?",
+                (0 if linha[0] else 1, note_id),
+            )
